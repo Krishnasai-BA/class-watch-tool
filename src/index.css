@@ -94,8 +94,9 @@
 }
 
 @keyframes swing {
-  0%, 100% { transform: rotate(-15deg); }
-  50% { transform: rotate(15deg); }
+  0% { transform: rotate(-30deg) translateX(-15px); }
+  50% { transform: rotate(30deg) translateX(15px); }
+  100% { transform: rotate(-30deg) translateX(-15px); }
 }
 
 @keyframes sway-roots {
@@ -110,7 +111,7 @@
 }
 
 .animate-swing {
-  animation: swing 3s ease-in-out infinite;
+  animation: swing 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   transform-origin: top center;
 }
 
