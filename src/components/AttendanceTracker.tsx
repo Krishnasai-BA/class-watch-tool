@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Plus, Trash2, GraduationCap, Calculator, ArrowLeft } from "lucide-react";
-import banyanBg from "@/assets/banyan-tree-bg.jpg";
-import swingingMan from "@/assets/swinging-man.png";
+import banyanBgVideo from "@/assets/banyan-tree-bg.mp4";
 
 interface Subject {
   id: number;
@@ -180,28 +179,22 @@ const AttendanceTracker = () => {
   // Input screen with banyan tree background
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Banyan tree background */}
+      {/* Banyan tree video background */}
       <div className="absolute inset-0">
-        <img
-          src={banyanBg}
-          alt=""
-          className="h-full w-full object-cover animate-sway"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover"
+        >
+          <source src={banyanBgVideo} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
       </div>
 
-      {/* Swinging man */}
-      <div className="absolute left-1/2 top-4 -translate-x-1/2 z-10">
-        <img
-          src={swingingMan}
-          alt="Swinging person"
-          className="h-28 w-28 animate-swing opacity-80 drop-shadow-2xl"
-          style={{ filter: "invert(1) brightness(2)" }}
-        />
-      </div>
-
       {/* Content */}
-      <div className="relative z-20 px-4 py-8 pt-36 md:py-12 md:pt-40">
+      <div className="relative z-20 px-4 py-8 pt-16 md:py-12 md:pt-20">
         <div className="mx-auto max-w-2xl">
           {/* Header */}
           <div className="mb-8 text-center">
