@@ -42,16 +42,17 @@ const AttendanceTracker = () => {
   const calcPercentage = (present: string, total: string) => {
     const p = parseInt(present);
     const t = parseInt(total);
-    if (isNaN(p) || isNaN(t) || t === 0) return null;
-    return Math.min((p / t) * 100, 100);
+    if (isNaN(p) || isNaN(t) || t === 0 || p < 0 || t < 0) return null;
+    const clamped = Math.min(p, t);
+    return (clamped / t) * 100;
   };
 
   const overallStats = subjects.reduce(
     (acc, s) => {
       const p = parseInt(s.present);
       const t = parseInt(s.total);
-      if (!isNaN(p) && !isNaN(t) && t > 0) {
-        acc.present += p;
+      if (!isNaN(p) && !isNaN(t) && t > 0 && p >= 0) {
+        acc.present += Math.min(p, t);
         acc.total += t;
         acc.valid++;
       }
